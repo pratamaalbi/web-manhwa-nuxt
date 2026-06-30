@@ -224,8 +224,14 @@ const switchTab = (tabValue) => {
 </script>
 
 <template>
-  <div class="bg-[#121212] text-[#e5e2e1] min-h-screen font-sans overflow-x-hidden selection:bg-[#55d8e1]/30 selection:text-[#55d8e1]">
+  <div 
+    class="text-[#e5e2e1] min-h-screen font-sans overflow-x-hidden selection:bg-[#55d8e1]/30 selection:text-[#55d8e1] transition-colors duration-500"
+    :class="activeFilter === 'following' ? 'bg-bookmark bg-cover bg-center bg-fixed' : 'bg-[#121212]'"
+  >
+    <!-- Dark overlay for bookmark background to keep text readable -->
+    <div v-if="activeFilter === 'following'" class="fixed inset-0 bg-black/75 z-0 pointer-events-none"></div>
 
+    <div class="relative z-10">
     <!-- =============================== -->
     <!-- LOADING BAR (top, fixed)        -->
     <!-- =============================== -->
@@ -687,10 +693,14 @@ const switchTab = (tabValue) => {
       </button>
     </nav>
 
+    </div>
   </div>
 </template>
 
 <style scoped>
+.bg-bookmark {
+  background-image: url('/bookmark-bg.jpg');
+}
 /* Hide scrollbar for horizontal scroll */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
