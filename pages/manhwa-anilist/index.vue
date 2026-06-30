@@ -96,7 +96,7 @@ const cleanHtml = (html) => {
       <!-- Error -->
       <div v-else-if="error" class="bg-red-950/20 border border-red-500/20 text-red-400 p-6 rounded-xl text-center">
         <span class="material-symbols-outlined text-3xl block mb-2">error</span>
-        <p>Gagal memuat data dari AniList.</p>
+        <p>{{ error.statusMessage || error.message || 'Gagal memuat data dari AniList.' }}</p>
         <button @click="refresh" class="mt-4 px-4 py-2 bg-red-500/20 rounded-lg hover:bg-red-500/30 transition-colors">Coba Lagi</button>
       </div>
 
