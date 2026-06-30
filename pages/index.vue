@@ -670,13 +670,20 @@ const switchTab = (tabValue) => {
         <span class="material-symbols-outlined">auto_stories</span>
         <span class="text-[10px] font-medium">Manhwa</span>
       </button>
+      <NuxtLink
+        to="/manhwa-anilist"
+        class="flex flex-col items-center gap-1 transition-colors text-violet-400 hover:text-violet-300"
+      >
+        <span class="material-symbols-outlined">explore</span>
+        <span class="text-[10px] font-medium">Katalog</span>
+      </NuxtLink>
       <button
         @click="activeFilter = 'following'; searchQuery = ''"
         :class="activeFilter === 'following' ? 'text-[#55d8e1]' : 'text-gray-500'"
         class="flex flex-col items-center gap-1 transition-colors"
       >
         <span class="material-symbols-outlined">bookmarks</span>
-        <span class="text-[10px] font-medium">Bookmarks</span>
+        <span class="text-[10px] font-medium">Bookmark</span>
       </button>
     </nav>
 
