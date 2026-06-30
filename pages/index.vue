@@ -5,7 +5,7 @@ import { useBookmarks } from '~/composables/useBookmarks'
 // ============================================
 // 1. Composables
 // ============================================
-const { bookmarks } = useBookmarks()
+const { bookmarks, isBookmarked } = useBookmarks()
 
 // ============================================
 // 2. State Management
@@ -144,6 +144,9 @@ const getMangaTitle = (manga) => {
 
 const getCoverUrl = (manga) => {
   if (!manga) return ''
+  if (isBookmarked(manga.id)) {
+    return '/bookmark-bg.jpg'
+  }
   const coverArt = manga.relationships?.find(r => r.type === 'cover_art')
   const fileName = coverArt?.attributes?.fileName
   if (!fileName) return 'https://placehold.co/256x360/201f1f/55d8e1?text=No+Cover'
